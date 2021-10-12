@@ -32,10 +32,13 @@ while (restartGame){
   rangeNum = parseInt(rangeNum);
   
   // Verifies the user's entry for the range number is a number greater than zero (NOTE: NaN has a default boolean value of false. Also, all numbers, positive and negative, have a default boolean value of true, except for zero which has a default boolean value of false.)
+
   while (!rangeNum || rangeNum < 1){
     rangeNum = parseInt(prompt(enterNumText)); //ALL ON ONE LINE: (parseInt + rangeNum variable set
-
   }
 
+  // Creates the random number (AKA Number to be guessed by the user) using the range number entered by the user
+  randomNum = Math.floor(Math.random() * rangeNum) + 1;
+  
   break;
 }
