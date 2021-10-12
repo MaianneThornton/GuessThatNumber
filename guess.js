@@ -49,10 +49,19 @@ while (restartGame){
     
     //trying to figure out how to prevent user from choosing a number of attempts larger than the range they selected
 
-    // while (!attempts || attempts <1 || attempts > rangeNum){
-    //   attempts = parseInt(prompt(`Please enter a number less than ${attempts}.`));
+    // if (attempts > rangeNum){
+    //   parseInt(prompt(`Please enter a number less than ${attempts}.`))
+    // };
+
+    // while (attempts > rangeNum){
+    //   parseInt(prompt(`Please enter a number less than ${attempts}.`))
+    // }
+
+    // while (!attempts || attempts < 1 || attempts > rangeNum){
+    //   attempts = parseInt(prompt(`Please enter a number from 1 to ${rangeNum}`));
     // }
   }
+
 
 
   guess = prompt (`Please enter a guess from 1 to ${rangeNum}. You have ${attempts} attempt(s) left:`);
@@ -70,7 +79,23 @@ while (restartGame){
     // Removes an attempt
     attempts--;
 
-    break;
+
+    if (guess === randomNum){
+      alert(`CONGRATULATIONS YOU GUESSED THE CORRECT NUMBER: ${randomNum}`)
+      break;
+    
+      // Checks if user has any attempts left. If not, then the game ends and the number is displayed to the user.
+    }else if (attempts === 0){
+      alert(`Sorry, but you have run out of attempts :(. The number was ${randomNum}`);
+      break;
+
+      // Checks if user's guess was too low and prompts user to guess again if that is the case
+    }else if (guess < randomNum){
+      guess = prompt(`Too low. You have ${attempts} attempt(s) left.`);
+      // The only other possibility is that the user's guess was too high so the user is prompted to guess again
+    }else {
+      prompt(`Too high. You have ${attempts} attempt(s) left.`);
+    }
   }
   
   break;
