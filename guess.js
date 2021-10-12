@@ -46,11 +46,32 @@ while (restartGame){
   // Verifies the user's entry for a number of attempts allowed is a number greater than zero
   while(!attempts || attempts < 1){
     attempts = parseInt(prompt(enterNumText));
+    
+    //trying to figure out how to prevent user from choosing a number of attempts larger than the range they selected
+
+    // while (!attempts || attempts <1 || attempts > rangeNum){
+    //   attempts = parseInt(prompt(`Please enter a number less than ${attempts}.`));
+    // }
   }
 
-  if (attempts < rangeNum){
-    then prompt(`Please enter a number less than the number of attempts`);
-  }
 
+  guess = prompt (`Please enter a guess from 1 to ${rangeNum}. You have ${attempts} attempt(s) left:`);
+
+  // Continues looping until the user guesses the correct number or runs out of attempts (NOTE: Loops until a BREAK keyword is run)
+  while (true){
+    // Attempts to convert the user's guess into a number
+    guess = parseInt(guess);
+
+    // Verifies the user's guess is a number greater than zero as well as a number within the range set by the user
+    while (!guess || guess < 1 || guess > rangeNum){
+      guess = parseInt(prompt(`Please enter a number from 1 to ${rangeNum}`));
+    }
+    
+    // Removes an attempt
+    attempts--;
+
+    break;
+  }
+  
   break;
 }
